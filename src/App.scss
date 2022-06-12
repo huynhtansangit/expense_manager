@@ -1,0 +1,16 @@
+.App {
+  h1 {
+    margin: 0;
+    padding: 20px 0;
+  }
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  height: 100vh;
+  .expenses {
+    padding: 1rem;
+    margin: 2rem auto;
+    width: 50rem;
+    max-width: 95%;
+    background-color: rgb(31, 31, 31);
+  }
+}
