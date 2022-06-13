@@ -6,24 +6,30 @@ import { DUMMY_EXPENSES } from "./Components/Expense/Expenses";
 import Card from "./Components/Card/Card";
 import NewExpense from "./Components/NewExpense/NewExpense";
 import ExpenseFilter from "./Components/Expense/ExpenseFilter";
+import ExpenseList from "./Components/Expense/ExpenseList";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  const [filteredExpenses, setFilteredExpenses] = useState(DUMMY_EXPENSES);
 
   const changeExpenseFilterHandler = (yearSelected) => {
     console.log(yearSelected);
+    const expensesFilteredByYear=DUMMY_EXPENSES.filter(expense => expense.date.getFullYear().toString()===yearSelected)
+    setFilteredExpenses(prevExpense=>[...expensesFilteredByYear])
   };
+  const addExpenseHandler = (expense) => {
+    setFilteredExpenses((prevExpense) => [expense, ...prevExpense]);
+    console.log(expense);
+  };
+
+  
+  
   return (
     <div className="App">
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Card className="expenses">
         <ExpenseFilter onChangeExpenseFilter={changeExpenseFilterHandler} />
-        {DUMMY_EXPENSES &&
-          DUMMY_EXPENSES.length > 0 &&
-          DUMMY_EXPENSES.map((expense) => {
-            return <ExpenseItem key={expense.id} item={expense} />;
-          })}
+        <ExpenseList filteredExpenses={filteredExpenses}/>
       </Card>
     </div>
   );
