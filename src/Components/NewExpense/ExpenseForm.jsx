@@ -5,7 +5,6 @@ const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
-
   // const [userInput,setUserInput]=useState({
   //     enteredTitle:'',
   //     enteredAmount:'',
@@ -39,36 +38,36 @@ const ExpenseForm = (props) => {
     //     enteredDate:date
     // })
   };
-  const submitHandler=(event)=>{
+  const submitHandler = (event) => {
     event.preventDefault();
-    const expenseData ={
-      title:enteredTitle,
-      amount:enteredAmount,
-      date:new Date(enteredDate)
-    }
-    props.onSaveData(expenseData)
-    setEnteredAmount('');
-    setEnteredDate('');
-    setEnteredTitle('');
-  }
+    const expenseData = {
+      title: enteredTitle,
+      amount: +enteredAmount,
+      date: new Date(enteredDate),
+    };
+    props.onSaveData(expenseData);
+    setEnteredAmount("");
+    setEnteredDate("");
+    setEnteredTitle("");
+  };
   return (
     <form onSubmit={submitHandler}>
-      <div className="new-expense__controls">
-        <div className="new-expense__control">
+      <div className="expense-form__controls">
+        <div className="expense-form__control">
           <label htmlFor="title">Title</label>
           <input
             id="title"
-            className="new-expense__input"
+            className="expense-form__input"
             type={"text"}
             onChange={titleChangeHandler}
             value={enteredTitle}
           />
         </div>
-        <div className="new-expense__control">
+        <div className="expense-form__control">
           <label htmlFor="amount">Amount</label>
           <input
             id="amount"
-            className="new-expense__input"
+            className="expense-form__input"
             type="number"
             min={500}
             step={500}
@@ -76,11 +75,11 @@ const ExpenseForm = (props) => {
             value={enteredAmount}
           />
         </div>
-        <div className="new-expense__control">
+        <div className="expense-form__control">
           <label htmlFor="date">Date</label>
           <input
             id="date"
-            className="new-expense__input"
+            className="expense-form__input"
             type="date"
             min={"2019-01-01"}
             max={"2022-12-31"}
@@ -89,9 +88,12 @@ const ExpenseForm = (props) => {
           />
         </div>
       </div>
-      <div className="new-expense__action">
-        <button className="new-expense__action--submit" type="submit">
+      <div className="expense-form__action">
+        <button className="expense-form__action--submit" type="submit">
           Add expense
+        </button>
+        <button className="expense-form__action--submit" type="button" onClick={props.onShowNewExpense}>
+          Cancel
         </button>
       </div>
     </form>

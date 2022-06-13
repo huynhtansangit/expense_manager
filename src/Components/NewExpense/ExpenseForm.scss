@@ -1,19 +1,19 @@
-.new-expense__controls {
+.expense-form__controls {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  .new-expense__control {
+  .expense-form__control {
     display: flex;
     flex-direction: column;
     width: 46%;
-    .new-expense__input {
+    .expense-form__input {
       height: 2rem;
       border-radius: 0.4rem;
       font-size: 1.2rem;
     }
   }
 }
-.new-expense__action {
+.expense-form__action {
   margin-top: 1rem;
   &--submit {
     height: 2rem;

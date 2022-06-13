@@ -7,6 +7,7 @@ import Card from "./Components/Card/Card";
 import NewExpense from "./Components/NewExpense/NewExpense";
 import ExpenseFilter from "./Components/Expense/ExpenseFilter";
 import ExpenseList from "./Components/Expense/ExpenseList";
+import ExpenseChart from "./Components/Expense/ExpenseChart";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -28,6 +29,8 @@ function App() {
     <div className="App">
       <NewExpense onAddExpense={addExpenseHandler} />
       <Card className="expenses">
+      <ExpenseChart expenses={filteredExpenses}/>
+
         <ExpenseFilter onChangeExpenseFilter={changeExpenseFilterHandler} />
         <ExpenseList filteredExpenses={filteredExpenses}/>
       </Card>
